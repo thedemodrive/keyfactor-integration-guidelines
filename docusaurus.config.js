@@ -5,7 +5,7 @@ module.exports = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   favicon: 'img/favicon.ico',
-  organizationName: 'facebook', // Usually your GitHub org/user name.
+  organizationName: 'thedemodrive', // Usually your GitHub org/user name.
   projectName: 'keyfactor-integration-guidelines', // Usually your repo name.
   themeConfig: {
     navbar: {
