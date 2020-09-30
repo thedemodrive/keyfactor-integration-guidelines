@@ -22,18 +22,6 @@ module.exports = {
           position: 'left',
         },
         {
-          to: 'docs/',
-          activeBasePath: 'docs',
-          label: 'Integrate With Istio',
-          position: 'left',
-        },
-        {
-          to: 'docs/',
-          activeBasePath: 'docs',
-          label: 'Integrate With Kubernetes',
-          position: 'left',
-        },
-        {
           href: 'https://www.keyfactor.com/',
           label: 'Keyfactor Platform',
           position: 'right',
@@ -52,12 +40,12 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl:
-            'https://github.com/thedemodrive/keyfactor-integration-guidelines',
+            'https://github.com/thedemodrive/keyfactor-integration-guidelines/blob/master',
         },
         blog: {
           showReadingTime: true,
           editUrl:
-            'https://github.com/thedemodrive/keyfactor-integration-guidelinesblog/',
+            'https://github.com/thedemodrive/keyfactor-integration-guidelines/blob/master',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
