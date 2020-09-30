@@ -19,25 +19,25 @@ kubectl label namespace default istio-injection=enabled
 Deploy an example of istio ([Book-Info](https://istio.io/docs/examples/bookinfo/))
 
 ```bash
-kubectl apply -f ./samples/bookinfo/platform/kube/bookinfo.yaml
+kubectl apply -f manifests/samples/bookinfo/platform/kube/bookinfo.yaml
 ```
 
 Configure a gateway for the Book-Info sample
 
 ```bash
-kubectl apply -f ./samples/bookinfo/networking/bookinfo-gateway.yaml
+kubectl apply -f manifests/samples/bookinfo/networking/bookinfo-gateway.yaml
 ```
 
 Configure mTLS destination rules
 
 ```bash
-kubectl apply -f ./samples/bookinfo/networking/destination-rule-all-mtls.yaml
+kubectl apply -f manifests/samples/bookinfo/networking/destination-rule-all-mtls.yaml
 ```
 
 Lock down mutual TLS for the entire mesh
 
 ```bash
-kubectl apply -f ./samples/peer-authentication.yaml
+kubectl apply -f manifests/samples/peer-authentication.yaml
 ```
 
 ### HOW TO VERIFY THE TRAFFIC IS USING MUTUAL TLS ENCRYPTION
@@ -45,7 +45,7 @@ kubectl apply -f ./samples/peer-authentication.yaml
 Lock down mutual TLS for the entire mesh
 
 ```bash
-kubectl apply -f ./samples/peer-authentication.yaml
+kubectl apply -f manifests/samples/peer-authentication.yaml
 ```
 
 Create the namespace "insidemesh" and deploy a sleep container **with sidecars**
@@ -53,7 +53,7 @@ Create the namespace "insidemesh" and deploy a sleep container **with sidecars**
 ```bash
 kubectl create ns insidemesh
 kubectl label namespace insidemesh istio-injection=enabled
-kubectl apply -f ./samples/sleep/sleep.yaml -n insidemesh
+kubectl apply -f manifests/samples/sleep/sleep.yaml -n insidemesh
 ```
 
 ---
@@ -78,7 +78,7 @@ Create another namespace "outsidemesh" and deploy a sleep container **without a 
 
 ```bash
 kubectl create ns outsidemesh
-kubectl apply -f samples/sleep/sleep.yaml -n outsidemesh
+kubectl apply -f manifests/samples/sleep/sleep.yaml -n outsidemesh
 ```
 
 ---

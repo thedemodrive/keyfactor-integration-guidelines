@@ -1,7 +1,7 @@
 ---
 id: kubernetes
 title: Keyfactor Certificate Signer
-sidebar_label: Example
+sidebar_label: Issue New Certificate
 slug: /kubernetes/example
 ---
 
@@ -16,9 +16,9 @@ openssl genrsa -out keyfactor.key 2048
 openssl req -new -key keyfactor.key -out keyfactor.csr
 ```
 
-#### 2. Create or update file at `./keyfactor/csr-example.yaml`
+#### 2. Create or update file at `manifests/samples/sample-csr.yaml`
 
-```Yaml
+```yaml
 apiVersion: certificates.k8s.io/v1beta1
 kind: CertificateSigningRequest
 metadata:
@@ -41,7 +41,7 @@ spec:
 #### 3. Submit CSR to Kubernetes by CLI
 
 ```Bash
-kubectl apply -f ./csr-example.yaml
+kubectl apply -f manifests/samples/sample-csr.yaml
 ```
 
 #### 4. Approve CSR

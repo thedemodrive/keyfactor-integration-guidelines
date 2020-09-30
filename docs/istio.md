@@ -7,13 +7,15 @@ slug: /istio
 
 ### 1. Install cli `istioctl`
 
-Download prebuilt version for sepecific OS:
+Download & extract prebuilt version for sepecific OS:
 
-- OSX: `istioctl-osx` - [Download Here](http://ahh.com/123)
-- Linux: `istioctl-linux-amd64` - [Download Here](http://ahh.com/123)
-- Windows: `istioctl-win.exe` - [Download Here](http://ahh.com/123)
+- OSX: `istioctl-osx` - [Download Here](https://github.com/thedemodrive/keyfactor-integration-guidelines/releases/download/1.0.0/istioctl-osx.zip)
+- Linux: `istioctl-linux-amd64` - [Download Here](https://github.com/thedemodrive/keyfactor-integration-guidelines/releases/download/1.0.0/istioctl-linux-amd64.zip)
+- Windows: `istioctl-win.exe` - [Download Here](https://github.com/thedemodrive/keyfactor-integration-guidelines/releases/download/1.0.0/istioctl-win.exe.zip)
 
 Extract and add `istioctl` client to your path (Linux or macOS or Windows):
+
+> All of packages are included at the following URL: [Click Here](https://github.com/thedemodrive/keyfactor-integration-guidelines/releases/tag/1.0.0)
 
 ### 2. Install Istio
 
@@ -22,19 +24,20 @@ Keyfactor Kubernetes Proxy will automatically provisioning TLS Client Certificat
 
 > Note: Please return [this step](/docs/install#3-install-finished) to get more detail
 
-Update `./keyfactor/istio-config.yaml` by using printed values on step [Get Start > Install](/docs/install#3-install-finished))
+Update `manifests/istio-config.yaml` by using printed values on step [Get Start > Install](/docs/install#3-install-finished))
 
-> Note: `./keyfactor/istio-config.yaml` is extracted from [install step](/docs/install#1-download-and-extract-bundle)
+> Note: `manifests/istio-config.yaml` is extracted from [install step](/docs/install#1-download-and-extract-bundle)
 
-```Yaml
+```yaml
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
 metadata:
   namespace: istio-system
 spec:
   hub: thedemodrive
-  tag: keyfactor-v2-beta2
-  installPackagePath: "charts"
+  tag: 1.8-keyfactor
+  # Path to directory contains Istio's charts
+  installPackagePath: "manifests/charts"
   profile: "demo"
   values:
     pilot:
@@ -51,10 +54,10 @@ spec:
       # Eg: custom-ca.default.svc.cluster.local:8932, 192.168.23.2:9000
       # If specified, Istio will authorize and forward the CSRs from the workloads to the specified external CA
       # using the Istio CA gRPC API.
-      address: <REPLACE_KEYFACTOR_K8S_ADDRESS>:<REPLACE_PORT>
+      address: <REPLACE_ADDRESS>:<REPLACE_PORT>
       # timeout for forward CSR requests from Istiod to External CA
-      # Default: 30s
-      requestTimeout: 30s
+      # Default: 20s
+      requestTimeout: 20s
       # Default TLS mode is MUTUAL, It's require to specific TLS client certificate files.
       # According sistiodSide = true, TLS files could be mounted from Kubernetes Secret
       # configurable via values.pilot.secretVolumes
@@ -63,12 +66,12 @@ spec:
         clientCertificate: "/etc/istio/<REPLACE_SECRET_NAME>/client-cert.pem"
         privateKey: "/etc/istio/<REPLACE_SECRET_NAME>/client-key.pem"
         caCertificates: "/etc/istio/<REPLACE_SECRET_NAME>/cacert.pem"
-        sni: <REPLACE_KEYFACTOR_K8S_ADDRESS>
+        sni: <REPLACE_ADDRESS>
         subjectAltNames: []
 ```
 
-Install Istio with `./keyfactor/istio-config.yaml`
+Install istio via `istioclt`
 
-```Bash
-istioctl install -f ./keyfactor/istio-config.yaml
+```bash
+istioctl install -f manifests/istio-config.yaml
 ```
