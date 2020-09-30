@@ -1,8 +1,8 @@
 module.exports = {
   title: 'Keyfactor Integration Guidelines',
   tagline: 'How to integrate Keyfactor with Kubernetes / Isio',
-  url: 'https://your-docusaurus-test-site.com',
-  baseUrl: '/',
+  url: 'https://thedemodrive.github.com',
+  baseUrl: '/keyfactor-integration-guidelines/',
   onBrokenLinks: 'throw',
   favicon: 'img/favicon.ico',
   organizationName: 'thedemodrive', // Usually your GitHub org/user name.

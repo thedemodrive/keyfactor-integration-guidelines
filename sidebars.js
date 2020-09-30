@@ -1,7 +1,7 @@
 module.exports = {
   someSidebar: {
-    ['Getting Start']: ['pre-requirements', 'doc2', 'doc3'],
-    ['Integrate With Istio']: ['mdx'],
-    ['Integrate With Kubernetes']: ['mdx'],
+    ['Getting Start']: ['prerequisite', 'install'],
+    ['Istio']: ['istio', 'istio-sample'],
+    ['Kubernetes']: ['kubernetes'],
   },
 };
