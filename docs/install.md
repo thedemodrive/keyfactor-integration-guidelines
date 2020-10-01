@@ -98,7 +98,7 @@ keyfactor:
 - Install via Helm command
 
 ```bash
-helm install keyfactor-k8s -n keyfactor keyfactor-kubernetes-1.0.0.tgz -f keyfactor-config.yaml --wait
+helm install keyfactor-k8s -n keyfactor keyfactor-kubernetes-1.0.0.tgz -f manifests/keyfactor-config.yaml --wait
 ```
 
 ### 3. Install finished
